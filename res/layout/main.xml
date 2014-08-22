@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+
+            android:background="@drawable/plopo">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:background="@drawable/doo"
+            >
+        <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="140dp"
+                android:src="@drawable/android_platform"
+                />
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_margin="20dp"
+                      android:orientation="horizontal"
+
+                >
+
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#FF000000"
+
+                    />
+
+            <EditText
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="0dp"
+                    android:inputType="text"
+
+                    android:id="@+id/txtuser"
+                    android:background="#ffffffff"
+                    />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_margin="20dp"
+                      android:orientation="horizontal"
+                >
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="8dp"
+                    android:textColor="#FF000000"
+                    />
+
+            <EditText
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="0dp"
+                    android:inputType="text"
+                    android:background="#ffffffff"
+                    android:id="@+id/txtpass"
+                    />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_margin="20dp"
+                      android:orientation="horizontal"
+                >
+            <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="10dp"
+                    android:text="Login"
+                    android:src="@drawable/ttp"
+                    android:id="@+id/btnlog"
+                    />
+            <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="10dp"
+                    android:text="Cancel"
+                    android:src="@drawable/rere"
+                    android:id="@+id/btncan"
+                    />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
+
+
