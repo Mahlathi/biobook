@@ -57,6 +57,21 @@ public class studentDatasourceDAOImpl implements studentDatasourceDAO {
 
     @Override
     public void updateStudent(Student stud) {
+        try {
+            open();
+            ContentValues values = new ContentValues();
+            values.put(DBAdapter.COLUMN_NAME, stud.getStud_name() );
+            values.put(DBAdapter.COLUMN_SURNAME, stud.getStud_last());
+            values.put(DBAdapter.COLUMN_EMAIL, stud.getStud_mail());
+            values.put(DBAdapter.COLUMN_CELL, stud.getStud_cell());
+
+            db.update(DBAdapter.TABLE_STUDENTS, values, DBAdapter.COLUMN_CELL + " = ? " ,
+                   new String[]{ String.valueOf(stud.getStud_cell())} );
+            close();
+        }catch(SQLException e)
+        {
+            System.out.println( "Helper error" + e.getStackTrace() );
+        }
 
     }
 
@@ -67,7 +82,15 @@ public class studentDatasourceDAOImpl implements studentDatasourceDAO {
 
     @Override
     public void deleteStudent(Student stud) {
-
+        try {
+            open();
+            db.delete(DBAdapter.TABLE_STUDENTS, DBAdapter.COLUMN_CELL + " = ? " ,
+                    new String[]{ String.valueOf(stud.getStud_cell())});
+            close();
+        }catch(SQLException e)
+        {
+            System.out.println( "Helper error" + e.getStackTrace() );
+        }
     }
 
     @Override

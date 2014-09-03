@@ -6,7 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import com.example.biobook.R;
+import com.example.biobook.domain.Student;
+import com.example.biobook.repository.Impl.studentDatasourceDAOImpl;
+import com.example.biobook.repository.studentDatasourceDAO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by akhona on 2014/08/19.
@@ -24,8 +31,13 @@ public class reg extends Activity {
     EditText stpost;
     ImageButton btnOne;
     ImageButton btnTwo;
-
+    final studentDatasourceDAO dao = new studentDatasourceDAOImpl(this);
     String[] info = new String[10];
+    List<Student> mlist = new ArrayList<Student>();
+
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +56,7 @@ public class reg extends Activity {
         btnTwo = (ImageButton) findViewById(R.id.btnclear);
 
 
+
         btnOne.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +72,7 @@ public class reg extends Activity {
                         info[6] = sttown.getText().toString();
                         info[7] = stpost.getText().toString();
 
-                        Intent intent = new Intent("com.example.addressbook.UPLOAD");
+                        Intent intent = new Intent("com.example.biobook.views.UPLOAD");
                         intent.putExtra( "things", info );
                         startActivity(intent);
                 }

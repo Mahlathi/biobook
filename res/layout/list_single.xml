@@ -8,6 +8,13 @@
               <TableRow>
 
                   <TextView
+                          android:id="@+id/kkk"
+                          android:layout_width="10dp"
+                          android:layout_height="50dp"
+                          android:visibility="gone"
+                          />
+
+                  <TextView
                         android:id="@+id/lastname"
                         android:layout_width="100dp"
                         android:layout_height="50dp"
@@ -22,6 +29,13 @@
                           android:layout_height="50dp"
                           android:layout_width="100dp"
                           android:text="Details"
+
+                          />
+                  <Button
+                          android:id="@+id/btndelete"
+                          android:layout_height="50dp"
+                          android:layout_width="100dp"
+                          android:text="Delete"
 
                           />
 

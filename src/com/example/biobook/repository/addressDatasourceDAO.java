@@ -10,8 +10,8 @@ import java.util.List;
 public interface addressDatasourceDAO {
     public void createAddress(Address address);
     public void updateAddress(Address address);
-    public Address findStudentById(int id);
-    public void deleteStudent(Address address);
+    public Address findAddressById(int id);
+    public void deleteAddress(Address address);
     public Address getAddress();
     public List<Address> getAddressList();
 }

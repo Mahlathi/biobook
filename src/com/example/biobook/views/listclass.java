@@ -17,15 +17,17 @@ public class listclass extends ArrayAdapter<String> {
     private Activity contexts;
     private String[] lastnames;
     private String[] cells;
+    private String[] iD;
     private int[] buttons;
 
-    public listclass( Activity contexts, String[] lastnames, String[] cells, int[] buttons )
+    public listclass( Activity contexts, String[] iD, String[] lastnames, String[] cells, int[] buttons )
     {
         super(contexts, R.layout.list_single, lastnames );
         this.contexts = contexts;
         this.lastnames = lastnames;
         this.cells = cells;
         this.buttons = buttons;
+        this.iD = iD;
     }
 
     public View getView(int position, View view, ViewGroup parent) {

@@ -1,8 +1,12 @@
 package com.example.biobook.views;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.example.biobook.R;
 import com.example.biobook.domain.Address;
@@ -22,8 +26,121 @@ public class upload extends Activity {
     EditText one;
     Button btndisp;
     TextView lbldisp;
+    final studentDatasourceDAO dao = new studentDatasourceDAOImpl(this);
+    final addressDatasourceDAO daob = new addressDatasourceDAOImpl(this);
     List<Student> studentList = new ArrayList<Student>();
     List<Address> addList = new ArrayList<Address>();
+
+    public class listclass extends ArrayAdapter<String> {
+        private Activity contexts;
+        private String[] lastnames;
+        private String[] cells;
+        private String[] iD;
+        private int[] buttons;
+        private int[] butt;
+
+        public listclass( Activity contexts,int[] butt,String[] iD, String[] lastnames, String[] cells, int[] buttons )
+        {
+            super(contexts, R.layout.list_single, lastnames );
+            this.contexts = contexts;
+            this.lastnames = lastnames;
+            this.cells = cells;
+            this.buttons = buttons;
+            this.butt = butt;
+            this.iD = iD;
+        }
+
+        public View getView(int position, View view, ViewGroup parent) {
+            LayoutInflater inflater = contexts.getLayoutInflater();
+            View rowView= inflater.inflate(R.layout.list_single, null, true);
+
+            TextView txtView = (TextView) rowView.findViewById(R.id.lastname);
+            TextView txtView2 = (TextView) rowView.findViewById(R.id.cellno);
+            TextView kkk = (TextView) rowView.findViewById(R.id.kkk);
+            Button prss = (Button) rowView.findViewById(R.id.btndt);
+            Button butto = (Button) rowView.findViewById(R.id.btndelete);
+
+            txtView.setText(lastnames[position]);
+            txtView2.setText(cells[position]);
+            kkk.setText(iD[position]);
+
+           // String[] lowo = new String[6];
+
+            //lowo[0] = txtView2.toString();
+           // lowo[1] = kkk.toString();
+
+           // prss.setTag(lowo);
+             prss.setTag(txtView2.getText().toString() + "#" + kkk.getText().toString());
+             butto.setTag(txtView2.getText().toString() + "#" + kkk.getText().toString());
+
+            prss.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent("com.example.biobook.views.DISPO");
+
+                   String[] valueser = new String[6];
+                    String value = "";
+                    String valow = "";
+
+                    //for( int i = 0; i < 6; i++ ) {
+                        String values = (String) view.getTag();
+                    //}
+                        valueser = values.split("#");
+                        value = valueser[0];
+                        valow = valueser[1];
+
+                    //String valow = (String)view.getTag();
+                    System.out.println(value + valow +"=======================================");
+                    intent.putExtra("value", value);
+                    intent.putExtra("valow", valow);
+                    startActivity(intent);
+
+
+                }
+            });
+
+            butto.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String[] valueser = new String[6];
+                    String value = "";
+                    String valow = "";
+
+                    //for( int i = 0; i < 6; i++ ) {
+                    String values = (String) view.getTag();
+                    //}
+                    valueser = values.split("#");
+                    value = valueser[0];
+                    valow = valueser[1];
+
+                    Student stud = new Student.Builder(" ")
+                            .lastname(" ")
+                            .email(" ")
+                            .cell(value)
+                            .id(0)
+                            .build();
+
+                    Address address = new Address.Builder(valow)
+                            .street_name(" ")
+                            .town(" ")
+                            .postal_code(" ")
+                            .id(0)
+                            .build();
+
+                    dao.deleteStudent(stud);
+                    daob.deleteAddress(address);
+                    Toast.makeText(getApplicationContext(), "Record Deleted!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            return rowView;
+        }
+
+        public listclass(Context context, int textViewResourceId) {
+            super(context, textViewResourceId);
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +170,10 @@ public class upload extends Activity {
         }
         else
         {
-            Toast.makeText( getApplicationContext(), "Fail!", Toast.LENGTH_SHORT ).show();
+            //Toast.makeText( getApplicationContext(), "Fail!", Toast.LENGTH_SHORT ).show();
         }
 
-        Toast.makeText( getApplicationContext(), "Success " + info[0] , Toast.LENGTH_LONG ).show();
+        //Toast.makeText( getApplicationContext(), "Success " + info[0] , Toast.LENGTH_LONG ).show();
 
 
 
@@ -73,9 +190,12 @@ public class upload extends Activity {
 
         String[] lasties = new String[ studentList.size() ];
         String[] cellies = new String[ studentList.size() ];
+        String[] iD = new String[addList.size()];
+
 
         last(lasties);
         cells(cellies);
+        stoto(iD);
 
 //        lbldisp.setText("Lastname: " + daoa.getStudent().getStud_last().toLowerCase() + " Phone: "
             //     + daoa.getStudent().getStud_cell().toLowerCase());
@@ -105,31 +225,31 @@ public class upload extends Activity {
         String[] cells = {""};
 
 
-
-
         final int[] buttons = new int[100];
-
+        final int[] butt = new int[100];
 
 
         listclass adapter = new
-                listclass(upload.this, lasties, cellies, buttons);
+                listclass(upload.this,butt,iD, lasties, cellies, buttons);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             // int z = 0;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int z = position;
+                //int z = position;
 
-                switch (view.getId()) {
-                    case 0 :
-                    Toast.makeText(getApplicationContext(), "You clicked button " + z, Toast.LENGTH_SHORT).show();
-                }
+                //switch (view.getId()) {
+                  //  case 0 :
+                   // Toast.makeText(getApplicationContext(), "You clicked button " + position, Toast.LENGTH_SHORT).show();
+            //    }
             }
 
 
         });
     }
+
+
 
     public void last( String[] values )
     {
@@ -149,6 +269,17 @@ public class upload extends Activity {
         for( Student s : studentList )
         {
             values[count] = s.getStud_cell();
+            count++;
+        }
+    }
+
+    public void stoto( String[] values )
+    {
+        int count = 0;
+
+        for( Address a : addList )
+        {
+            values[count] = a.getStreet_number();
             count++;
         }
     }

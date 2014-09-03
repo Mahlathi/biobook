@@ -57,18 +57,41 @@ public class addressDatasourceDAOImpl implements addressDatasourceDAO {
 
     @Override
     public void updateAddress(Address address) {
+        try {
+            open();
+            ContentValues values = new ContentValues();
+            values.put(DBAdapter.COLUMN_STREET_NO, address.getStreet_number() );
+            values.put(DBAdapter.COLUMN_STREET_NAME, address.getStreet_name());
+            values.put(DBAdapter.COLUMN_TOWN, address.getTown());
+            values.put(DBAdapter.COLUMN_POSTAL_CODE, address.getPostal_code());
 
+            db.update(DBAdapter.TABLE_ADDRESS, values, DBAdapter.COLUMN_STREET_NO + " = ? " ,
+                    new String[]{ String.valueOf(address.getStreet_number())} );
+            close();
+        }catch(SQLException e)
+        {
+            System.out.println( "Helper error" + e.getStackTrace() );
+        }
     }
 
     @Override
-    public Address findStudentById(int id) {
+    public Address findAddressById(int id) {
         return null;
     }
 
     @Override
-    public void deleteStudent(Address address) {
-
+    public void deleteAddress(Address address) {
+        try {
+            open();
+                db.delete(DBAdapter.TABLE_ADDRESS, DBAdapter.COLUMN_STREET_NO + " = ? " ,
+                        new String[]{ String.valueOf(address.getStreet_number())});
+            close();
+        }catch(SQLException e)
+        {
+            System.out.println( "Helper error" + e.getStackTrace() );
+        }
     }
+
 
     @Override
     public Address getAddress() {

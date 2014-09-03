@@ -43,6 +43,7 @@
                     android:layout_height="40dp"
                     android:background="#ffffffff"
                     android:id="@+id/txtname"
+                    android:textColor="#F0000000"
 
                     />
         </LinearLayout>
@@ -66,6 +67,7 @@
                     android:layout_height="40dp"
                     android:background="#ffffffff"
                     android:id="@+id/txtsururname"
+                    android:textColor="#F0000000"
 
 
                     />
@@ -90,6 +92,7 @@
                     android:layout_height="40dp"
                     android:background="#ffffffff"
                     android:id="@+id/txtemail"
+                    android:textColor="#F0000000"
 
                     />
         </LinearLayout>
@@ -114,6 +117,7 @@
                     android:layout_height="40dp"
                     android:background="#ffffffff"
                     android:id="@+id/txtcell"
+                    android:textColor="#F0000000"
 
                     />
         </LinearLayout>
@@ -157,6 +161,7 @@
                     android:layout_height="40dp"
                     android:background="#ffffffff"
                     android:id="@+id/txtstr"
+                    android:textColor="#F0000000"
 
                     />
         </LinearLayout>
@@ -181,6 +186,7 @@
                     android:layout_height="40dp"
                     android:background="#ffffffff"
                     android:id="@+id/txtstrname"
+                    android:textColor="#F0000000"
 
                     />
         </LinearLayout>
@@ -205,6 +211,7 @@
                     android:layout_height="40dp"
                     android:background="#ffffffff"
                     android:id="@+id/txttown"
+                    android:textColor="#F0000000"
 
                     />
         </LinearLayout>
@@ -229,6 +236,7 @@
                     android:layout_height="40dp"
                     android:background="#ffffffff"
                     android:id="@+id/txtpost"
+                    android:textColor="#F0000000"
 
                     />
         </LinearLayout>

@@ -15,15 +15,21 @@
         </activity>
         <activity android:name=".views.reg">
             <intent-filter>
-                <action android:name="com.example.addressbook.REG"/>
+                <action android:name="com.example.biobook.views.REG"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity android:name=".views.upload">
             <intent-filter>
-                <action android:name="com.example.addressbook.UPLOAD"/>
+                <action android:name="com.example.biobook.views.UPLOAD"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".views.dispo">
+        <intent-filter>
+            <action android:name="com.example.biobook.views.DISPO"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
         </activity>
     </application>
 </manifest>
